@@ -14,9 +14,14 @@ class Option(models.Model):
     option = models.CharField(max_length=100)
 
 
+class Answers(models.Model):
+    answer = models.CharField(max_length=100)
+
+
 class Todo(models.Model):
     options = models.ManyToManyField(Option)
     audio = models.FileField(upload_to='audio', max_length=100, blank=True)
+    answer = models.ManyToManyField(Answers)
     created_on = models.DateTimeField(auto_now_add=True)
 
     # def __str__(self):
